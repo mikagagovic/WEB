@@ -1,0 +1,26 @@
+
+.nav_bar{
+    display: inline-block;
+    margin-left: 12%;
+    
+}
+.title-span
+{
+    margin-left: 48%;
+    margin-top: -2.7%;
+}
+.nav-bar-nav
+{
+    background:  mediumslateblue;
+}
+
+.md-toolbar
+{
+  background-image: url("/assets/rentavehiclepng.png");
+  margin-top: 1.5%;
+
+}
+.divuser
+{
+    margin-right: 2%;
+}

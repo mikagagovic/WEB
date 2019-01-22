@@ -1,0 +1,36 @@
+<div >
+  <div  class="example-card-div"  *ngFor="let rent of rents "  >
+  <md-card  class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+   <!-- <md-card-title>{{rent.Name}} </md-card-title>-->
+  </md-card-header>
+  <img class="imegeInCard" md-card-image src={{rent.Image}} />
+  <md-card-content>
+      <p>
+          CarModel: {{rent.Vehicle.CarModel}}
+       </p>
+       <p>
+          Manufactor: {{rent.Vehicle.Manufactor}}
+       </p>
+       <p>
+          Price per hour: {{rent.Vehicle.PricePerHour}}
+       </p>
+    <p>
+      Start Date: {{rent.StartDate}}
+      </p>
+      <p>
+        End Date: {{rent.EndDate}}
+        </p>
+        <p>
+          Branch Took: {{rent.BranchTook.Address}}
+       </p>
+  </md-card-content>
+  <md-card-actions>
+    <section class="example-section">
+      <md-checkbox class="example-margin" [(ngModel)]="rent.Approved" (change)="approve(rent)" name ="Approved">Approve</md-checkbox>
+    </section>
+  </md-card-actions>
+  </md-card>
+  </div>
+  </div>

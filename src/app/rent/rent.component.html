@@ -1,0 +1,58 @@
+<div *ngIf="userRole==true || managerRole==true" class="container">
+  <form type="form" #f="ngForm" (ngSubmit)="f.form.valid && saveRent(f.value,f,roomForCheckReserv)"  novalidate>
+     
+      <div>
+          <input type="hidden" name="roomForCheckReserv" [(ngModel)]="roomForCheckReserv" #room="ngModel"/>
+      </div>
+      <div>
+          <label for="startDate">Start date:</label>
+          <input ngui-datetime-picker date-only="false" #StartDate = "ngModel"
+           [(ngModel)]='nRent.StartDate' name="StartDate" required/>
+           <div *ngIf="f.submitted && !StartDate.valid">StartDate is required</div>
+      </div>
+      <div>
+          <label for="endDate">End date:</label>
+      <input ngui-datetime-picker  date-only="false" #EndDate = "ngModel" 
+      [(ngModel)]='nRent.EndDate' name="EndDate" required/>
+      <div *ngIf="f.submitted && !EndDate.valid">EndDate is required</div>
+      </div>
+
+      <div>
+        <md-select style="margin: 15px;" [(ngModel)]="nRent.BranchTook_Id" name="BranchTook_Id"  #BranchTook_Id="ngModel" 
+        placeholder="Brench Took" required>
+            <md-option *ngFor="let brench of branches" [value]="brench.Id">
+                {{brench.Address}}
+            </md-option>
+        </md-select>
+        <div *ngIf="f.submitted && !BranchTook_Id.valid">BranchTook_Id  is required</div>
+      </div>
+      
+     <div>
+        <md-select style="margin: 15px;" [(ngModel)]="nRent.BranchReturn_Id" name="BranchReturn_Id"  #BranchReturn_Id="ngModel" 
+        placeholder="Branch Return" required>
+             <md-option *ngFor="let brench of branches" [value]="brench.Id">
+                {{brench.Address}}
+              </md-option>
+        </md-select>
+         <div *ngIf="f.submitted && !BranchReturn_Id.valid">BranchReturn_Id  is required</div>
+     </div>
+     <div>
+        <md-input-container>
+         <input mdInput type="text" [readonly] = "true" placeholder="Image" name="Image" [(ngModel)]="nRent.Image" #Image="ngModel" required />
+        </md-input-container>
+         <div *ngIf="f.submitted && !Image.valid">Image is required</div>
+     </div>
+     <div>
+        <button type="button" style="margin: 15px;" md-mini-fab color="primary" (click)="openChooseImagesDialog()">
+            <md-icon>image</md-icon>
+        </button>
+     </div>
+     <div *ngIf="errorMessage != undefined" >
+        {{errorMessage}}
+    </div>
+        
+
+        
+        <button md-raised-button color="primary" type="submit">Rent</button>
+  </form>
+</div>

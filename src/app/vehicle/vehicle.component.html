@@ -1,0 +1,78 @@
+
+<div *ngIf="userUndefined==true || appUser==true ">
+  <div class="example-card-div"  *ngFor="let vehicle of vehicles "  >
+      <md-card class="example-card">
+        <md-card-header>
+          <div  md-card-avatar class="example-header-image"></div>
+          <md-card-title>  Manufactor: {{vehicle.Manufactor}}  </md-card-title>
+              <md-card-subtitle><a class='kinda-link' >Model: {{vehicle.CarModel}} </a> 
+              </md-card-subtitle>
+        </md-card-header>
+        <img class="imegeInCard" md-card-image src={{vehicle.Image}} />
+        <md-card-content>
+          <p>
+              Year: {{vehicle.Year}}
+         </p>
+          <p>
+              Description: {{vehicle.Description}}
+         </p>
+         <p>
+              Price per hour: {{vehicle.PricePerHour}}
+         </p>
+        </md-card-content>
+       <div *ngIf="appUser==true">
+        <md-card-actions>
+          <button md-raised-button color="primary"  (click) = "rentVehicleDialog(vehicle)" >
+              Rent
+         </button>
+      </md-card-actions>
+    </div>
+      </md-card>
+    </div>
+  </div>
+
+  
+
+
+<div *ngIf="managerRole==true || adminRole == true">
+<div  class="example-card-div"  *ngFor="let vehicle of vehicles "  >
+  <md-card class="example-card">
+    <md-card-header>
+      <div md-card-avatar class="example-header-image"></div>
+      <md-card-title>  Manufactor: {{vehicle.Manufactor}}  </md-card-title>
+          <md-card-subtitle><a class='kinda-link' >Model: {{vehicle.CarModel}} </a> 
+          </md-card-subtitle>
+    </md-card-header>
+    <img class="imegeInCard" md-card-image src={{vehicle.Image}} />
+    <md-card-content>
+      <p>
+          Year: {{vehicle.Year}}
+     </p>
+      <p>
+          Description: {{vehicle.Description}}
+     </p>
+     <p>
+          Price per hour: {{vehicle.PricePerHour}}
+     </p>
+    </md-card-content>
+<md-card-actions>
+    <button md-fab color="warn"  (click) = "editVehicleDialog(vehicle)" >
+        <md-icon >edit</md-icon>
+   </button>
+    <button md-fab  color="primary" (click) = "delete(vehicle)" >
+            <md-icon >delete</md-icon>
+    </button>
+   
+</md-card-actions>
+</md-card>
+</div>
+</div>
+
+
+<span *ngIf="managerRole==true && managerBanned==false " class="done">
+  <button md-fab color="primary" (click) = "openVehicleNewDialog()" >
+  <md-icon >add</md-icon>
+  </button>
+     
+</span>
+
