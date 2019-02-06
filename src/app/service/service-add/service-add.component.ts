@@ -9,6 +9,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {MdDialog, MdDialogRef,MdDialogConfig,MdSnackBar} from '@angular/material';
 import {ImageuploadComponent} from "../../imageupload/imageupload.component";
 import {HttpServiceService} from "../service.service";
+import { HttpCountryService } from '../../country/country.service';
+import { Country } from '../../country/country.model';
 
 @Component({
   selector: 'app-service-add',
@@ -20,14 +22,21 @@ export class ServiceAddComponent implements OnInit {
 
   nService:any={};
   private postService:Service;
+  public countries:Array<Country>;
 
   constructor(private httpServiceService:HttpServiceService,
+              private httpCountryService:HttpCountryService,
               private router: Router,
               public dialogRef: MdDialogRef<ServiceAddComponent>,
               public dialog:MdDialog,
               private snackBar:MdSnackBar) { }
 
   ngOnInit() {
+    this.httpCountryService.getCountries().subscribe((res: any) => {
+      this.countries = res; console.log(this.countries);
+    },
+      error => {alert("Unsuccessful fetch operation!"); console.log(error);}
+    );
     
   }
 
@@ -48,6 +57,7 @@ export class ServiceAddComponent implements OnInit {
        this.postService.Email=service.Email;
        this.postService.Description=service.Description;
        this.postService.Logo=service.Logo;
+       this.postService.Country_Id = service.Country_Id;
 
        this.httpServiceService.postService(this.postService).subscribe(
           ()=>{ 

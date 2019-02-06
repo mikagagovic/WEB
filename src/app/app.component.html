@@ -33,6 +33,10 @@
                     <a md-tab-link *ngIf="adminRole==true || managerRole == true" [routerLink]="['/vehicleType']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">VehicleType</a>
             </div>
             <div class="nav_bar">
+                <a md-tab-link *ngIf="adminRole==true || managerRole == true" [routerLink]="['/country']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Country</a>
+            </div>
+
+            <div class="nav_bar">
                 <a *ngIf="adminRole==true" md-tab-link [routerLink]="['/managers']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">Managers</a>
             </div>
             <div class="nav_bar">

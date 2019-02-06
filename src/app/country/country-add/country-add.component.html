@@ -1,0 +1,38 @@
+<div class="addDialog">
+  <h1 md-dialog-title>Add Country</h1>
+  <form type="form" #f="ngForm" (ngSubmit)="f.form.valid && saveCountry(f.value,f)"  novalidate>
+      <div>
+          <md-input-container>
+          <input  mdInput type="text" placeholder="Name" name="Name" [(ngModel)]="nCountry.Name" #Name="ngModel" required />
+          </md-input-container>
+          <div *ngIf="f.submitted && !Name.valid">Name is required</div>
+      </div>
+      <div>
+          <md-input-container>
+          <input  mdInput placeholder="Call number" type="text" name="CallNumber" [(ngModel)]="nCountry.CallNumber" #CallNumber="ngModel" required />
+          </md-input-container>
+          <div *ngIf="f.submitted && !CallNumber.valid">CallNumber is required</div>
+      </div>
+      <div>
+         <md-input-container>
+          <input mdInput type="text" placeholder="Registration" name="Registration" [(ngModel)]="nCountry.Registration" #Registration="ngModel" required />
+         </md-input-container>
+          <div *ngIf="f.submitted && !Registration.valid">Registration is required</div>
+      </div>
+      <div>
+         <md-input-container>
+          <input mdInput type="text" [readonly] = "true" placeholder="Flag" name="Flag" [(ngModel)]="nCountry.Flag" #Flag="ngModel" required />
+         </md-input-container>
+          <div *ngIf="f.submitted && !Flag.valid">Flag is required</div>
+      </div>
+      <div>
+            <button type="button" style="margin: 15px;" md-mini-fab color="primary" (click)="openChooseFlagDialog()">
+                <md-icon>image</md-icon>
+            </button>
+      </div>
+      <button md-mini-fab  color="primary" (click) = "saveCountry()" >
+            <md-icon>save</md-icon>
+    </button>
+  </form>
+</div>
+

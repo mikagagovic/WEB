@@ -129,6 +129,11 @@ export class AppComponent {
         {
             route: ['/rents'],
             label: "Rents"
+        },
+
+        {
+            route: ['/country'],
+            label: "Country"
         }
     ]
      

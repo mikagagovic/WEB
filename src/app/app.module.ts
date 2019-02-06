@@ -43,6 +43,10 @@ import { CommentComponent } from './comment/comment.component';
 import { ServiceCommentsComponent } from './service/service-comments/service-comments.component';
 import { CommentAddComponent } from './comment/comment-add/comment-add.component'
 import { HttpCommentService } from './comment/comment.service';
+import { CountryComponent } from './country/country.component';
+import { CountryAddComponent } from './country/country-add/country-add.component';
+import { CountryEditComponent } from './country/country-edit/country-edit.component';
+import { HttpCountryService } from '../app/country/country.service'
 
 const Routes=[
   {path: "register",component:RegisterComponent},
@@ -54,7 +58,8 @@ const Routes=[
   {path: "vehicle",component:VehicleComponent, },
   {path: "vehicleType",component:VehicleTypeComponent, },
   {path:"managers",component:ManagersComponent},
-  {path:"rents",component:AllrentsComponent}
+  {path:"rents",component:AllrentsComponent},
+  {path:"country",component:CountryComponent}
   
 ]
 @NgModule({
@@ -83,11 +88,14 @@ const Routes=[
     AllrentsComponent,
     CommentComponent,
     ServiceCommentsComponent,
-    CommentAddComponent
-    
+    CommentAddComponent,
+    CountryComponent,
+    CountryAddComponent,
+    CountryEditComponent
   ],
   entryComponents: [ImageuploadComponent,BranchAddComponent,MapComponent,BranchEditComponent,
-    VehicleAddComponent,VehicleEditComponent,VehicleTypeAddComponent,VehicleTypeEditComponent,RentComponent,ServiceCommentsComponent],
+    VehicleAddComponent,VehicleEditComponent,VehicleTypeAddComponent,VehicleTypeEditComponent,RentComponent,ServiceCommentsComponent,
+  CountryAddComponent, CountryEditComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -98,7 +106,7 @@ const Routes=[
     BrowserAnimationsModule,NgxPaginationModule,AgmCoreModule.forRoot({apiKey: 'AIzaSyAtvp71DTpNaEw59EcmxvFMQOKRyRUiArg'})
   ],
   providers: [HttpAuthenticationService,AppUrl,AdminGuard,ManagerGuard,HttpVehicleTypeService,HttpBranchService,HttpServiceService,HttpVehicleService
-  ,HttpUsersService,HttpRentService,HttpCommentService],
+  ,HttpUsersService,HttpRentService,HttpCommentService,HttpCountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

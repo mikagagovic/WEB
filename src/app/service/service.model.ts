@@ -1,3 +1,5 @@
+import { Country } from "../country/country.model";
+
 export class Service{
 
     Id:number;
@@ -6,5 +8,7 @@ export class Service{
     Email:string;
     Description:string;
     Approved:boolean;
+    Country:Country;
+    Country_Id:number;
 
 }

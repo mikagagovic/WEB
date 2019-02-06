@@ -6,6 +6,7 @@ import{MdSnackBar} from '@angular/material'
 import { Branch } from '../branch/branch.model';
 import { Vehicle } from '../vehicle/vehicle.model';
 import { Rent } from '../rent/rent.model';
+import { Country } from '../country/country.model';
 
 @Component({
   selector: 'app-imageupload',
@@ -18,6 +19,7 @@ export class ImageuploadComponent implements OnInit {
   public branch : Branch;
   public vehicle : Vehicle;
   public rent : Rent;
+  public country : Country;
   public uploader:FileUploader;
   public hasBaseDropZoneOver:boolean = false;
   private token:string;
@@ -51,6 +53,10 @@ export class ImageuploadComponent implements OnInit {
             else if (this.rent !== undefined)
             {
               this.rent.Image=item.file.name;
+            }
+            else if (this.country !== undefined)
+            {
+              this.country.Flag=item.file.name;
             }
             this.snackBar.open(response, "", {
                                 duration: 2000,

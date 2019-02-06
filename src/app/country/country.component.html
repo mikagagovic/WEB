@@ -1,0 +1,65 @@
+
+<div *ngIf="managerRole==true">
+<div  class="example-card-div"  *ngFor="let country of countries"  >
+<md-card  class="example-card">
+<md-card-header>
+  <div md-card-avatar class="example-header-image"></div>
+  <md-card-title>{{country.Name}} </md-card-title>
+</md-card-header>
+<img class="imegeInCard" md-card-image src={{country.Flag}} />
+<md-card-content>
+  <p>
+    Call number: {{country.CallNumber}}
+    </p>
+    <p>
+    Registration: {{country.Regestration}}
+  </p>
+</md-card-content>
+<md-card-actions>
+    <button md-fab color="warn"  (click) = "editCountryDialog(country)" >
+        <md-icon >edit</md-icon>
+   </button>
+    <button md-fab  color="primary" (click) = "delete(country)" >
+            <md-icon >delete</md-icon>
+    </button>
+</md-card-actions>
+</md-card>
+</div>
+</div>
+
+<div *ngIf="adminRole==true">
+  <div  class="example-card-div"  *ngFor="let country of countries"  >
+  <md-card  class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{country.Name}} </md-card-title>
+  </md-card-header>
+  <img class="imegeInCard" md-card-image src={{country.Flag}} />
+  <md-card-content>
+    <p>
+      Call number: {{country.CallNumber}}
+      </p>
+      <p>
+      Registration: {{country.Registration}}
+    </p>
+  </md-card-content>
+  <md-card-actions>
+      <button md-fab color="warn"  (click) = "editCountryDialog(country)" >
+          <md-icon >edit</md-icon>
+     </button>
+      <button md-fab  color="primary" (click) = "delete(country)" >
+              <md-icon >delete</md-icon>
+      </button>
+  </md-card-actions>
+  </md-card>
+  </div>
+  </div>
+     
+  <router-outlet></router-outlet>
+
+  <span *ngIf="adminRole==true " class="done">
+      <button md-fab  color="primary" (click) = "openNewCountryDialog()" >
+      <md-icon>add</md-icon>
+      </button>
+  </span>
+

@@ -51,12 +51,12 @@ export class ServiceComponent implements OnInit {
           (res: any) => {
             this.services = res; 
             console.log(this.services);
-            this.setImagesForAccommodations();},
+            this.setImagesForSerivce();},
             error => {alert("Unsuccessful fetch operation!"); console.log(error);}
         );
   }
 
-  setImagesForAccommodations(){
+  setImagesForSerivce(){
     
     this.services.forEach(element => {
         this.httpServiceService.getLogoUrlForService(element.Id).subscribe(

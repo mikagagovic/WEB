@@ -9,6 +9,8 @@ import {MdDialog, MdDialogRef, MdDialogConfig,MdSnackBar} from '@angular/materia
 import {AppComponent} from "../../app.component";
 import {ImageuploadComponent} from "../../imageupload/imageupload.component";
 import { HttpServiceService } from '../service.service';
+import { HttpCountryService } from '../../country/country.service';
+import { Country } from '../../country/country.model';
 
 @Component({
   selector: 'app-service-edit',
@@ -22,8 +24,10 @@ export class ServiceEditComponent implements OnInit {
   public eService : Service;
   private role:string;
   private adminRole:boolean;
+  public countries:Array<Country>;
 
   constructor(private httpServiceService:HttpServiceService,
+              private httpCountryService:HttpCountryService,
               public dialogRef: MdDialogRef<ServiceEditComponent>,
               private router:Router,
               public dialog:MdDialog,
@@ -34,6 +38,12 @@ export class ServiceEditComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.httpCountryService.getCountries().subscribe((res: any) => {
+      this.countries = res; console.log(this.countries);
+    },
+      error => {alert("Unsuccessful fetch operation!"); console.log(error);}
+    );
 
     this.adminRole=false;
     this.createPermisions();
@@ -64,6 +74,7 @@ export class ServiceEditComponent implements OnInit {
       this.serviceForEdit.Email=service.Email;
       this.serviceForEdit.Description=service.Description;
       this.serviceForEdit.Logo=service.Logo;
+      this.serviceForEdit.Country_Id = service.Country_Id;
       if (this.adminRole)
       this.serviceForEdit.Approved = service.Approved;
       else  
@@ -78,18 +89,7 @@ export class ServiceEditComponent implements OnInit {
           },
           error => {alert("Close!"); console.log(error);}
         );
-     /*   if(this.adminRole==true){
-          if (accommodation.Approved == true)
-          {
-            this.httpAccommodationService.approveAccommodation(accommodation.Id).subscribe(
-              ()=>{
-                 console.log('Approve changed.');
-              },
-              error => {alert("Close!"); console.log(error);}
-
-            );
-          }
-        }*/
+    
        
   }
 

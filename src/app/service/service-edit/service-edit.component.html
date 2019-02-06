@@ -20,6 +20,15 @@
           <div *ngIf="f.submitted && !Email.valid">Email is required</div>
       </div>
       <div>
+            <md-select style="margin: 15px;" [(ngModel)]="eService.Country_Id" name="Country_Id"  #Country_Id="ngModel" 
+            placeholder="Country" required>
+                <md-option *ngFor="let country of countries" [value]="country.Id">
+                    {{country.Name}}
+                </md-option>
+            </md-select>
+            <div *ngIf="f.submitted && !Country_Id.valid">Country_Id is required</div>
+     </div>
+      <div>
          <md-input-container>
           <input mdInput type="text" [readonly] = "true" placeholder="Logo" name="Logo" [(ngModel)]="eService.Logo" #Logo="ngModel" required />
          </md-input-container>
